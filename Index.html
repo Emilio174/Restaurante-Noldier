@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reserva tu mesa | Restaurante</title>
+<meta name="description" content="Reserva tu mesa por WhatsApp. Disfruta una experiencia gastronómica única en un ambiente perfecto para compartir." />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#0d0b09;
+--panel:#161210;
+--card:#1d1714;
+--line:#33291f;
+--gold:#d4a24a;
+--cream:#f5ead9;
+--muted:#b7a893;
+--green:#25d366;
+}
+*{box-sizing:border-box}
+body{
+margin:0;background:var(--bg);color:var(--cream);
+font-family:Inter,system-ui,sans-serif;line-height:1.6;
+}
+.wrap{max-width:1120px;margin:auto;padding:0 20px}
+header{
+position:sticky;top:0;z-index:50;
+background:rgba(13,11,9,.88);backdrop-filter:blur(12px);
+border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:16px}
+.logo{font-family:"Playfair Display",serif;font-size:1.4rem;font-weight:800;letter-spacing:.04em}
+.logo span{color:var(--gold)}
+.btn{
+display:inline-flex;align-items:center;justify-content:center;gap:10px;
+padding:14px 22px;border-radius:999px;font-weight:700;
+text-decoration:none;border:0;cursor:pointer;transition:.2s;
+}
+.btn-whatsapp{background:var(--green);color:#04220f}
+.btn-whatsapp:hover{transform:translateY(-2px)}
+.btn-outline{border:1px solid var(--gold);color:var(--gold);background:transparent}
+.hero{
+min-height:88vh;display:grid;align-items:center;
+background:
+linear-gradient(rgba(13,11,9,.82),rgba(13,11,9,.94)),
+url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80") center/cover;
+}
+.hero-inner{padding:90px 0}
+.eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:.18em;font-weight:700;font-size:.78rem}
+h1{
+font-family:"Playfair Display",serif;
+font-size:clamp(2.6rem,7vw,4.8rem);
+line-height:1.03;margin:16px 0;letter-spacing:-.02em;
+}
+.hero p{max-width:560px;color:var(--muted);font-size:1.08rem}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.badges{display:flex;flex-wrap:wrap;gap:16px;margin-top:26px;color:var(--muted);font-size:.9rem}
+.badges b{color:var(--cream)}
+.reservation{
+background:var(--card);border:1px solid var(--line);
+border-radius:26px;padding:26px;box-shadow:0 30px 70px rgba(0,0,0,.35);
+}
+.reservation h2{font-family:"Playfair Display",serif;margin:0 0 6px;font-size:1.5rem}
+.reservation p{color:var(--muted);font-size:.9rem;margin:0 0 20px}
+label{font-size:.8rem;font-weight:700;color:#d8c9b4}
+input,select,textarea{
+width:100%;margin-top:6px;padding:14px 16px;
+background:#241d18;border:1px solid var(--line);
+border-radius:14px;color:var(--cream);font:inherit;
+}
+input:focus,select:focus,textarea:focus{outline:2px solid rgba(212,162,74,.3);border-color:var(--gold)}
+.grid{display:grid;gap:14px}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.slot{
+padding:12px 6px;border-radius:12px;border:1px solid var(--line);
+background:#241d18;color:var(--cream);font-weight:700;cursor:pointer;font-size:.85rem;
+}
+.slot.active{background:var(--gold);color:#231708;border-color:var(--gold)}
+.full{width:100%;margin-top:18px}
+.note{font-size:.76rem;color:var(--muted);text-align:center;margin-top:12px}
+section{padding:70px 0}
+.head{max-width:640px;margin-bottom:36px}
+h2{font-family:"Playfair Display",serif;font-size:clamp(1.8rem,4vw,2.5rem);margin:10px 0}
+.cards{display:grid;gap:16px;grid-template-columns:1fr}
+.card{
+background:var(--card);border:1px solid var(--line);
+border-radius:20px;padding:24px;
+}
+.card h3{font-family:"Playfair Display",serif;margin:0 0 8px;color:var(--gold)}
+.card p{margin:0;color:var(--muted);font-size:.94rem}
+.steps{display:grid;gap:14px}
+.step{
+background:var(--card);border:1px solid var(--line);
+border-radius:18px;padding:20px;display:flex;gap:16px;
+}
+.num{
+min-width:38px;height:38px;border-radius:50%;
+background:var(--gold);color:#231708;
+display:grid;place-items:center;font-weight:800;
+}
+footer{
+background:#080605;border-top:1px solid var(--line);
+padding:46px 0;text-align:center;color:var(--muted);font-size:.9rem;
+}
+footer strong{color:var(--cream)}
+@media(min-width:760px){
+.grid-2{grid-template-columns:1fr 1fr}
+.cards{grid-template-columns:repeat(3,1fr)}
+.steps{grid-template-columns:repeat(3,1fr)}
+.reservation{padding:34px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="wrap nav">
+<div class="logo">Casa <span>Dorada</span></div>
+<a class="btn btn-whatsapp" href="#reserva">Reservar mesa</a>
+</div>
+</header>
+
+<main>
+<section class="hero">
+<div class="wrap hero-inner">
+<div class="eyebrow">Cocina de autor · Ambiente exclusivo</div>
+<h1>Una experiencia para compartir, brindar y volver.</h1>
+<p>Reserva tu mesa en minutos por WhatsApp. Ideal para cenas, celebraciones, reuniones de negocio y momentos especiales.</p>
+<div class="cta">
+<a class="btn btn-whatsapp" href="#reserva">📅 Reservar por WhatsApp</a>
+<a class="btn btn-outline" href="#carta">Ver experiencia</a>
+</div>
+<div class="badges">
+<span>🍽️ <b>Cocina de temporada</b></span>
+<span>🍷 <b>Carta de vinos</b></span>
+<span>🎉 <b>Eventos privados</b></span>
+</div>
+</div>
+</section>
+
+<section class="wrap" id="reserva">
+<div class="reservation">
+<h2>Reserva tu mesa</h2>
+<p>Completa los datos y te llevaremos a WhatsApp con tu solicitud lista.</p>
+
+<div class="grid">
+<div>
+<label for="nombre">Nombre completo</label>
+<input id="nombre" placeholder="Ej. Ana Martínez" />
+</div>
+
+<div>
+<label for="telefono">Teléfono / WhatsApp</label>
+<input id="telefono" inputmode="tel" placeholder="Ej. 55 1234 5678" />
+</div>
+
+<div>
+<label for="personas">Número de personas</label>
+<select id="personas">
+<option>2 personas</option>
+<option>3 personas</option>
+<option>4 personas</option>
+<option>5 personas</option>
+<option>6 personas</option>
+<option>7 a 10 personas</option>
+<option>Más de 10 personas / evento</option>
+</select>
+</div>
+
+<div>
+<label for="fecha">Fecha</label>
+<input id="fecha" type="date" />
+</div>
+
+<div>
+<label>Horario preferido</label>
+<div class="slots" id="slots"></div>
+</div>
+
+<div>
+<label for="ocasion">Ocasión</label>
+<select id="ocasion">
+<option>Cena casual</option>
+<option>Cumpleaños</option>
+<option>Aniversario</option>
+<option>Reunión de negocios</option>
+<option>Evento privado</option>
+</select>
+</div>
+
+<div>
+<label for="comentario">Comentario opcional</label>
+<textarea id="comentario" rows="2" placeholder="Preferencia de mesa, alergias, decoración, etc."></textarea>
+</div>
+</div>
+
+<button class="btn btn-whatsapp full" onclick="enviarWhatsApp()">💬 Enviar reservación por WhatsApp</button>
+<p class="note">Se abrirá WhatsApp con tu solicitud preparada. El equipo confirmará disponibilidad.</p>
+</div>
+</section>
+
+<section class="wrap" id="carta">
+<div class="head">
+<div class="eyebrow">Nuestra propuesta</div>
+<h2>Sabores pensados para compartir</h2>
+<p>Una carta que combina ingredientes de temporada, técnica contemporánea y coctelería de autor.</p>
+</div>
+<div class="cards">
+<div class="card"><h3>Entradas</h3><p>Pan artesanal, tablas para compartir, carpaccios y opciones frescas de temporada.</p></div>
+<div class="card"><h3>Platos fuertes</h3><p>Cortes, pescados, pastas y propuestas de autor con acompañamientos cuidados.</p></div>
+<div class="card"><h3>Postres y barra</h3><p>Postres artesanales, coctelería clásica y de autor, vinos y bebidas sin alcohol.</p></div>
+</div>
+</section>
+
+<section class="wrap">
+<div class="head">
+<div class="eyebrow">Cómo reservar</div>
+<h2>Tu mesa en tres pasos</h2>
+</div>
+<div class="steps">
+<div class="step"><div class="num">1</div><div><h3>Elige tu experiencia</h3><p>Selecciona número de personas, fecha, hora y ocasión.</p></div></div>
+<div class="step"><div class="num">2</div><div><h3>Envía tu solicitud</h3><p>WhatsApp se abrirá con todos los datos ya redactados.</p></div></div>
+<div class="step"><div class="num">3</div><div><h3>Confirma tu mesa</h3><p>El equipo revisa disponibilidad y confirma tu reservación.</p></div></div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<strong>Casa Dorada</strong><br>
+Cocina, ambiente y momentos memorables.<br><br>
+<a class="btn btn-whatsapp" href="#reserva">Reservar mi mesa</a>
+</div>
+</footer>
+
+<script>
+const WHATSAPP_NUMBER = "5210000000000";
+const horarios = ["13:00","14:00","15:00","18:00","19:00","20:00","21:00","22:00"];
+let horarioSeleccionado = "";
+
+const contenedor = document.getElementById("slots");
+horarios.forEach(hora=>{
+const b=document.createElement("button");
+b.type="button";
+b.className="slot";
+b.textContent=hora;
+b.onclick=()=>{
+document.querySelectorAll(".slot").forEach(x=>x.classList.remove("active"));
+b.classList.add("active");
+horarioSeleccionado=hora;
+};
+contenedor.appendChild(b);
+});
+
+function enviarWhatsApp(){
+const nombre=document.getElementById("nombre").value.trim();
+const telefono=document.getElementById("telefono").value.trim();
+const personas=document.getElementById("personas").value;
+const fecha=document.getElementById("fecha").value;
+const ocasion=document.getElementById("ocasion").value;
+const comentario=document.getElementById("comentario").value.trim();
+
+if(!nombre || !telefono || !fecha || !horarioSeleccionado){
+alert("Por favor completa nombre, teléfono, fecha y horario.");
+return;
+}
+
+const mensaje =
+`Hola, quiero reservar una mesa en Casa Dorada.
+
+Nombre: ${nombre}
+Teléfono: ${telefono}
+Personas: ${personas}
+Fecha: ${fecha}
+Horario preferido: ${horarioSeleccionado}
+Ocasión: ${ocasion}
+Comentarios: ${comentario || "Ninguno"}
+
+¿Podrían confirmarme la disponibilidad, por favor?`;
+
+window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`,"_blank");
+}
+</script>
+
+</body>
+</html>
+
